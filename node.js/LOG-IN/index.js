@@ -1,5 +1,5 @@
 const readline = require("readline/promises");
-const logIn = require("./logIn.js");
+const logIn = require("./logIn_prodAdvaced.js");
 
 const input = readline.createInterface({
     input: process.stdin,
@@ -14,7 +14,7 @@ async function main() {
 
     try {
         const result = await logIn(username, password);
-        console.log(result);
+        console.log(`Welcome, ${result.name}!`);
 
     } catch (error) {
         console.log(error);

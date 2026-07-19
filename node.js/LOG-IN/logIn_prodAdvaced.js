@@ -11,7 +11,6 @@ const accounts = [
 
 ]
 
-
 function logIn(username, password){
 
     return new Promise((resolve, reject) => {
@@ -26,8 +25,8 @@ function logIn(username, password){
             });
 
             if (account){
-                resolve("Log In Successful");
-             } else {
+                resolve({ message: "Log In Successful", id: account.id, name: account.name });
+            } else {
                 reject("Log In Failed");
              }
         },500);
