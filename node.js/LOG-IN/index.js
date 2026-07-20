@@ -1,5 +1,5 @@
 const readline = require("readline/promises");
-const logIn = require("./logIn_prodAdvaced.js");
+const logIn = require("./logIn_Explicit.js");
 
 const input = readline.createInterface({
     input: process.stdin,
