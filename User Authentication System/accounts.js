@@ -1,4 +1,4 @@
-[
+const accounts = [
     {
         id:1, 
         name: 'admin',
@@ -9,6 +9,6 @@
         password: 'admin'    
     }
 
-]
+];
 
 module.exports = accounts;
