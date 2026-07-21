@@ -7,88 +7,45 @@ const input = readline.createInterface({
     output: process.stdout
 });
 
-async function fahrenheitMenu() {
-    while (true) {
-        const answer = await input.question(
-            "\nEnter Fahrenheit (or type 'return'): "
-        );
+async function main(){
+    try{
 
-        if (answer.toLowerCase() === "return") {
-            break;
-        }
+        while(true){
+            const tempSelect = await input.question("\nSelect 1 to convert F to C\nSelect 2 to convert C to F: ");
 
-        const temp = Number(answer);
+            if (tempSelect === "1"){
+                const temp = Number(await input.question("Convert to Celsius: "));
+                
+                try{
+                    const result = await toCelsius(temp);
+                    console.log(`The result is: ${result}`)
 
-        if (isNaN(temp)) {
-            console.log("Please enter a valid number.");
-            continue;
-        }
+                } catch (error){
+                    console.log(error)
+                }
 
-        try {
-            const result = await toCelsius(temp);
-            console.log(`${temp}°F = ${result}°C`);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-}
+            } else if (tempSelect === "2"){
+                const temp = Number(await input.question("Convert to Fahrenheit: "));
 
-async function celsiusMenu() {
-    while (true) {
-        const answer = await input.question(
-            "\nEnter Celsius (or type 'return'): "
-        );
+                try{
+                    const result = await toFahrenheit(temp);
+                    console.log(`The result is ${result}`);
 
-        if (answer.toLowerCase() === "return") {
-            break;
-        }
+                }catch(error){
+                    console.log(error)
 
-        const temp = Number(answer);
+                }
 
-        if (isNaN(temp)) {
-            console.log("Please enter a valid number.");
-            continue;
-        }
-
-        try {
-            const result = await toFahrenheit(temp);
-            console.log(`${temp}°C = ${result}°F`);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-}
-
-async function main() {
-    try {
-        while (true) {
-            console.log("\n====== Temperature Converter ======");
-            console.log("1. Fahrenheit → Celsius");
-            console.log("2. Celsius → Fahrenheit");
-            console.log("3. Exit");
-
-            const option = await input.question("Select an option: ");
-
-            switch (option) {
-                case "1":
-                    await fahrenheitMenu();
-                    break;
-
-                case "2":
-                    await celsiusMenu();
-                    break;
-
-                case "3":
-                    console.log("Goodbye!");
-                    return;
-
-                default:
-                    console.log("Invalid option.");
+            } else {
+                console.log("invalid option")
             }
+ 
         }
-    } finally {
+        
+    } finally{
         input.close();
     }
 }
 
 main();
+
