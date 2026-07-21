@@ -9,6 +9,4 @@ function toCelsius(temp){
 
 }
 
-toCelsius();
-
 module.exports = toCelsius;
