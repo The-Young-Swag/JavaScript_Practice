@@ -10,4 +10,6 @@ const accounts = [
         pin: '2003'
     },
 
-]
+];
+
+module.exports = accounts;
