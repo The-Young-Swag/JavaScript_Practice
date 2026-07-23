@@ -8,7 +8,7 @@ const accounts = [
         id: 2,
         username: 'trevor_mundo',
         pin: '2003'
-    },
+    }
 
 ];
 
